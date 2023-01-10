@@ -38,14 +38,7 @@ function App() {
   };
 
   const addAction = (index) => {
-    console.log(index, 41);
-    let actionobject = { action_type: "" };
-    let data = [...formFields];
-    console.log(data, 44);
-    let afterPush = data[index]["action"].concat(actionobject);
-    data[index]["action"] = afterPush;
-    console.log(data, 47);
-    setFormFields(data);
+    console.log(index);
   };
 
   const removeFields = (index) => {
