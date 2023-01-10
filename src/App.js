@@ -24,6 +24,12 @@ function App() {
     setFormFields(data);
   };
 
+  const handleActionChange = (action_event, index, act_index) => {
+    let data = [...formFields];
+    data[index][action_event.target.name] = action_event.target.value;
+    setFormFields(data);
+  };
+
   const submit = (e) => {
     e.preventDefault();
     console.log(formFields);
@@ -32,7 +38,7 @@ function App() {
   const addFields = () => {
     let object = {
       rule: "",
-      action: [],
+      action: [{ action_type: "" }],
     };
     setFormFields([...formFields, object]);
   };
@@ -44,7 +50,6 @@ function App() {
     console.log(data, 44);
     let afterPush = data[index]["action"].concat(actionobject);
     data[index]["action"] = afterPush;
-    console.log(data, 47);
     setFormFields(data);
   };
 
@@ -73,7 +78,9 @@ function App() {
                     <input
                       name="action"
                       placeholder="action"
-                      onChange={(event) => handleFormChange(event, index)}
+                      onChange={(action_event) =>
+                        handleActionChange(action_event, index, act_index)
+                      }
                       value={act.action_type}
                     />
                     <br />
