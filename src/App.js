@@ -19,6 +19,7 @@ function App() {
   ]);
 
   const handleFormChange = (event, index) => {
+    console.log(22);
     let data = [...formFields];
     data[index][event.target.name] = event.target.value;
     setFormFields(data);
@@ -26,7 +27,8 @@ function App() {
 
   const handleActionChange = (action_event, index, act_index) => {
     let data = [...formFields];
-    data[index][action_event.target.name] = action_event.target.value;
+    data[index]["action"][act_index][action_event.target.name] =
+      action_event.target.value;
     setFormFields(data);
   };
 
@@ -76,7 +78,7 @@ function App() {
                 return (
                   <div key={act_index}>
                     <input
-                      name="action"
+                      name="action_type"
                       placeholder="action"
                       onChange={(action_event) =>
                         handleActionChange(action_event, index, act_index)
